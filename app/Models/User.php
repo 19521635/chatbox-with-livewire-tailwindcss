@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cache;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -58,4 +59,8 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function isOnline() {
+        return Cache::has('user-is-online-' . $this->id);
+    }
 }

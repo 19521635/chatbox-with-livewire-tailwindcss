@@ -41,11 +41,13 @@
 
             </div>
             <div class="col-span-3 bg-gray-50 flex flex-col">
+                @foreach ($users as $user)
                 <div
                     class="px-4 py-2 cursor-pointer text-blue-700 hover:text-blue-900 font-bold flex flex-row justify-items-center items-center">
-                    <div class="h-2 w-2 rounded-full bg-green-400 mr-1">
-                    </div> admin
+                    <div class="h-2 w-2 rounded-full @if($user->isOnline()) bg-green-400 @endif bg-red-400 mr-1">
+                    </div> {{$user->name}}
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
